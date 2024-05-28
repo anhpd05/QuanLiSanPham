@@ -15,7 +15,7 @@ module.exports.index = async (req, res) => {
         find.status = statusChange;
     } // End 16.1.3 
 
-    // Tối ưu là những phần trạng thái product
+    //16.1.3 : Tối ưu lại những phần trạng thái product
     let filterStatus = [
         {
             name : "Tất cả",
