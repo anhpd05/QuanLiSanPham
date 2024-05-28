@@ -1,0 +1,6 @@
+mixin sub-menu(productCategory)
+    ul
+      each item in productCategory
+        li #{item.title}
+            if item.children && item.children.length > 0 
+                +sub-menu(item.children)
