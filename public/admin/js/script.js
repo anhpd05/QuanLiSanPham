@@ -22,6 +22,7 @@ if(buttonsStatus.length > 0) {
 // End Status
 
 // 16.1.4 : Phần tìm kiếm 
+// Search
 const formSearch = document.querySelector("#form-search");
 if(formSearch){
     let url = new URL (window.location.href);
@@ -38,3 +39,25 @@ if(formSearch){
     
     })
 }
+// End Search
+
+// Page ( Phân Trang)
+const buttonsPagination = document.querySelectorAll("[button-pagination]");
+
+if(buttonsPagination) {
+    let url = new URL(window.location.href)
+
+    buttonsPagination.forEach( button => {
+        button.addEventListener("click" , () => {
+            const page = button.getAttribute("button-pagination");
+            console.log(page);
+
+            url.searchParams.set("page" ,page);
+
+            window.location.href = url.href;
+        });
+      
+    });
+}
+
+// End Page (Phân Trang)
