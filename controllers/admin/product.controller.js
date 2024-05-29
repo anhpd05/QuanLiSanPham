@@ -2,6 +2,7 @@
 const Product = require("../../models/product.model");
 const filterStatusHelpers = require("../../helpers/filter-status");
 const searchHelpers = require("../../helpers/search");
+const paginationHelpers = require("../../helpers/pagination");
 
 module.exports.index = async (req, res) => {
 
@@ -30,22 +31,26 @@ module.exports.index = async (req, res) => {
 // End 16.1.4 :
 
 //Pagination ( Phân Trang)
-
-    let objectPagination = {
+    const countProducts = await Product.countDocuments(find);
+    let objectPagination = paginationHelpers(
+    {
         currentPage: 1,
         limitItem: 4,
-    }
+    },
+    req.query,
+    countProducts
+    );
     
-    if(req.query.page) {
-        objectPagination.currentPage = parseInt(req.query.page)
-        objectPagination.skip = (objectPagination.currentPage - 1 ) *objectPagination.limitItem
-        // console.log(objectPagination.skip);
-    }
-    const countProducts = await Product.countDocuments(find);
-    // console.log(countProducts); // Đếm số lượng bản ghi
-    const totalPages = Math.ceil(countProducts / objectPagination.limitItem)
-    // console.log(totalPages); // Tính ra số trang cần có 
-    objectPagination.totalPages = totalPages;
+    // if(req.query.page) {
+    //     objectPagination.currentPage = parseInt(req.query.page)
+    //     objectPagination.skip = (objectPagination.currentPage - 1 ) *objectPagination.limitItem
+    //     // console.log(objectPagination.skip);
+    // }
+    // const countProducts = await Product.countDocuments(find);
+    // // console.log(countProducts); // Đếm số lượng bản ghi
+    // const totalPages = Math.ceil(countProducts / objectPagination.limitItem)
+    // // console.log(totalPages); // Tính ra số trang cần có 
+    // objectPagination.totalPages = totalPages;
 
 
 // End Pagination
