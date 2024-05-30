@@ -62,3 +62,25 @@ if(buttonsPagination) {
 }
 
 // End Page (Phân Trang)
+
+// Delete item
+const buttonDeleteItem = document.querySelectorAll("[button-delete]");
+const formDeleteItem = document.querySelector("#form-delete-item");
+if (buttonDeleteItem.length > 0) {
+  var path = formDeleteItem.getAttribute("data-path")
+  buttonDeleteItem.forEach(button => {
+    button.addEventListener("click", () => {
+      const isConfirm = confirm("bạn chắc chắn muốn xoá chứ?");
+
+      if (isConfirm) {
+        const id = button.getAttribute("data-id");
+        const action = `${path}/${id}?_method=DELETE`;
+        formDeleteItem.action = action;
+
+        formDeleteItem.submit();
+        console.log(formDeleteItem.action );
+      }
+    })
+  })
+}
+// End Delete item
