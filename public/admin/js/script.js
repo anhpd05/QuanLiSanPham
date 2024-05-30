@@ -1,4 +1,5 @@
 // Button Status
+
 const buttonsStatus = document.querySelectorAll("[button-status]");
 
 if(buttonsStatus.length > 0) {
@@ -14,7 +15,6 @@ if(buttonsStatus.length > 0) {
             }else{
                 url.searchParams.delete("status")
             }
-            // console.log(url.href); // ktra xem có url para đc thay đổi chưa 
             window.location.href = url.href // chuyển hướng trang sang active,ina 
         })
     })
@@ -40,6 +40,7 @@ if(formSearch){
     })
 }
 // End Search
+
 
 // Page ( Phân Trang)
 const buttonsPagination = document.querySelectorAll("[button-pagination]");

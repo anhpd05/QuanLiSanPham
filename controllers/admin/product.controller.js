@@ -41,17 +41,6 @@ module.exports.index = async (req, res) => {
     countProducts
     );
     
-    // if(req.query.page) {
-    //     objectPagination.currentPage = parseInt(req.query.page)
-    //     objectPagination.skip = (objectPagination.currentPage - 1 ) *objectPagination.limitItem
-    //     // console.log(objectPagination.skip);
-    // }
-    // const countProducts = await Product.countDocuments(find);
-    // // console.log(countProducts); // Đếm số lượng bản ghi
-    // const totalPages = Math.ceil(countProducts / objectPagination.limitItem)
-    // // console.log(totalPages); // Tính ra số trang cần có 
-    // objectPagination.totalPages = totalPages;
-
 
 // End Pagination
   
@@ -67,4 +56,13 @@ module.exports.index = async (req, res) => {
 
 
     }) 
+} 
+// [PATCH] : /admin/products/change-status/:status/:id
+module.exports.changeStatus = async (req, res) => {
+
+    const status = req.params.status
+    const id = req.params.id
+
+    await Product.updateOne({_id : id } , {status : status});
+    res.redirect('back')
 }

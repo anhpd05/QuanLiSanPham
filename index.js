@@ -1,4 +1,5 @@
 const express = require('express') // cài đặt express
+const methodOverride = require('method-override') // cài đặt method : PATCH ,DE,..
 require('dotenv').config()  // cài env 
 const app = express()
 const port = process.env.PORT // kết nối env
@@ -14,6 +15,9 @@ database.connect();
 
 const systemConfig = require("./config/system");
 // Lấy cái /admin để dùng cho all file pug
+
+app.use(methodOverride('_method'))// ÉP kiểu method : Patch
+
 
 app.set('views', './views');  // kết nối pug
 app.set('view engine', 'pug');
