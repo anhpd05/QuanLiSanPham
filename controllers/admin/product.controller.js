@@ -35,7 +35,11 @@ module.exports.index = async (req, res) => {
     
 // End Pagination
   
-    const products = await Product.find(find).limit(objectPagination.limitItem).skip(objectPagination.skip)
+    const products = await Product
+    .find(find)
+    .limit(objectPagination.limitItem)
+    .skip(objectPagination.skip)
+    .sort({position : "desc"})
     // console.log(products);
     res.render("admin/pages/products/index.pug" , {
         pageTitle : "Trang danh sách sản phẩm ",
@@ -51,6 +55,7 @@ module.exports.changeStatus = async (req, res) => {
     const id = req.params.id
 
     await Product.updateOne({_id : id } , {status : status});
+    req.flash('success', `Đã thay đổi trạng thái  thành công sản phẩm!`);
     res.redirect('back')
 }
 // [PATCH] : /admin/products/change-multi
@@ -62,16 +67,31 @@ module.exports.changeMulti = async (req, res) => {
     switch (type) {
         case "active":
             await Product.updateMany({_id:{ $in : ids}}, {status : type})
+            req.flash('success', `Đã cập nhập trạng thái ${ids.length} sản phẩm!`);
             break;
 
         case "inactive":
             await Product.updateMany({_id:{ $in : ids}}, {status : type})
+            req.flash('success', `Đã cập nhập trạng thái ${ids.length} sản phẩm!`);
             break;
         case "delete-all":
             await Product.updateMany({_id:{ $in : ids}}, {
                 deleted : true, 
                 deletedAt : new Date()
             })
+            req.flash('success', `Đã xoá ${ids.length} sản phẩm!`);
+            break;
+        case "change-position":
+            console.log(req.body.ids)
+            for (const item of ids) {
+                let[id,position] = item.split("-");
+                position = parseInt(position)
+                console.log(id)
+                console.log(position)
+            await Product.updateOne({_id : id } , {position : position});    
+            req.flash('success', `Đã thay đổi vị trí ${ids.length} sản phẩm!`);
+            }
+
             break;
 
         default:
@@ -90,6 +110,6 @@ module.exports.deleteItem = async (req, res) => {
         deleted : true,
         deletedAt: new Date
     })
-  
+    req.flash('success', `Đã xoá thành công sản phẩm!`);
     res.redirect('back');
   }

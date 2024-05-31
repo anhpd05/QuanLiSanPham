@@ -1,9 +1,12 @@
-const express = require('express') // cài đặt express
-const methodOverride = require('method-override') // cài đặt method : PATCH ,DE,..
-const bodyParser = require('body-parser') // cài đặt ép kiểu của statusChangeMulti
+const express = require('express'); // cài đặt express
+const methodOverride = require('method-override') ;// cài đặt method : PATCH ,DE,..
+const flash = require('express-flash');
+const bodyParser = require('body-parser'); // cài đặt ép kiểu của statusChangeMulti
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
-require('dotenv').config()  // cài env 
-const app = express()
+require('dotenv').config();  // cài env 
+const app = express();
 const port = process.env.PORT // kết nối env
 
 const route = require("./routes/client/index.route.js") ;
@@ -25,6 +28,13 @@ app.use(bodyParser.urlencoded({ extended: false }))// dùng bodyparser
 
 app.set('views', './views');  // kết nối pug
 app.set('view engine', 'pug');
+
+//Flash(thông báo trạng thái )
+app.use(cookieParser('05JuLy'));
+app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
+//End Flash
+
 app.use(express.static("public")); // kết nối folder public
 
 

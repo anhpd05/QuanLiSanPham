@@ -5,8 +5,16 @@ include ../../mixins/pagination
 include ../../mixins/form-change-multi
 
 block main 
-  h1 Trang sản phẩm
-
+  //- h1 Trang sản phẩm
+  - if (messages.success)
+    .message.info
+      div(
+        class="alert alert-success"
+        data-time="5000"
+        show-alert
+        ) #{messages.success} 
+          span(alert-close) X
+      
   .card.mb-3
     .card-header Bộ lọc và Tìm kiếm
     .card-body
@@ -31,6 +39,7 @@ block main
             th Hình ảnh
             th Tiêu đề
             th Giá
+            th Vị trí
             th Trạng thái
             th Hành động
         tbody
@@ -52,6 +61,14 @@ block main
                 )
               td #{item.title}
               td #{item.price}$
+              td 
+                input(
+                  type="number"
+                  value= item.position
+                  style= "width: 60px"
+                  min="1"
+                  name="position"
+                )              
               td
                 if(item.status == "active")
                   a(
@@ -77,12 +94,15 @@ block main
                   data-id = item.id
                   ) Xóa               
   +pagination(pagination)
-  form(
+  //- Change 1 status
+  form( 
     action=""
     method="POST"
     data-path= `${prefixAdmin}/products/change-status`
     id= "form-change-status"
   ) 
+  //- End change 1 Status
+  
   form(
     action=""
     method="POST"
