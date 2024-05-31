@@ -7,3 +7,5 @@ Một vài chức năng của dự án :
   6 .Thay đổi trạng thái của nhiều sản phẩm
   7.1 : Tính năng xóa vĩnh viễn 
   7.2 : Tính năng xóa mềm và Xóa nhiều sản phâm
+  8. Tính năng thay đổi vị trí sản phẩm và hiện ra theo thứ tự admin hoặc sản phẩm nào đc nhập vào mới nhất sẽ đẩy lên đầu
+  9.Hiện thông báo khi mà thay đổi trạng thái sản phẩm
