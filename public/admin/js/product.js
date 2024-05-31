@@ -75,21 +75,32 @@ if (fromChangeMulti) {
     fromChangeMulti.addEventListener("submit", (e) => {
         e.preventDefault();
         // const checkboxMuli = document.querySelector("[checkbox-multi]");
+
         const inputsChecked = document.querySelectorAll("input[name='id']:checked");
+        const typeChange = e.target.elements.type.value
+        console.log(typeChange)
 
-    if (inputsChecked.length > 0) {
-        let ids = [];
-        const inputsId = fromChangeMulti.querySelector("input[name='ids']");
-        inputsChecked.forEach(input => {
-            const id = input.value;
-            ids.push(id);
-        })
-        inputsId.value = ids.join(", ");
+        if(typeChange == "delete-all"){
+            const isConfirm = confirm("Bạn chắc muốn xóa sản phẩm?");
 
-        fromChangeMulti.submit();
-    } else {
-        alert("Vui lòng chọn 1 bản ghi!");
-    }
+            if(!isConfirm){
+                return;
+            }
+        }
+
+        if (inputsChecked.length > 0) {
+            let ids = [];
+            const inputsId = fromChangeMulti.querySelector("input[name='ids']");
+            inputsChecked.forEach(input => {
+                const id = input.value;
+                ids.push(id);
+            })
+            inputsId.value = ids.join(", ");
+
+            fromChangeMulti.submit();
+        } else {
+            alert("Vui lòng chọn 1 bản ghi!");
+        }
   })
 }
 
