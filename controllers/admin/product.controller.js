@@ -89,8 +89,9 @@ module.exports.changeMulti = async (req, res) => {
                 console.log(id)
                 console.log(position)
             await Product.updateOne({_id : id } , {position : position});    
-            req.flash('success', `Đã thay đổi vị trí ${ids.length} sản phẩm!`);
+            
             }
+            req.flash('success', `Đã thay đổi vị trí ${ids.length} sản phẩm!`);
 
             break;
 
@@ -103,7 +104,7 @@ module.exports.changeMulti = async (req, res) => {
 // [DELETE] /admin/product/delete/:id
 module.exports.deleteItem = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
+    // console.log(id);
   
     // await Product.deleteOne({ _id: id });
     await Product.updateOne({_id:id},{

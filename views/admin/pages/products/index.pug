@@ -3,17 +3,10 @@ include ../../mixins/filter-status
 include ../../mixins/search
 include ../../mixins/pagination
 include ../../mixins/form-change-multi
-
+include ../../mixins/alert.pug
 block main 
   //- h1 Trang sản phẩm
-  - if (messages.success)
-    .message.info
-      div(
-        class="alert alert-success"
-        data-time="5000"
-        show-alert
-        ) #{messages.success} 
-          span(alert-close) X
+  +alert-success(5000)
       
   .card.mb-3
     .card-header Bộ lọc và Tìm kiếm
