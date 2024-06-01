@@ -1,9 +1,10 @@
 const express = require('express'); // cài đặt express
 const methodOverride = require('method-override') ;// cài đặt method : PATCH ,DE,..
-const flash = require('express-flash');
+const flash = require('express-flash'); // hiện thông báo thay đổi trạng thái
 const bodyParser = require('body-parser'); // cài đặt ép kiểu của statusChangeMulti
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+
 
 require('dotenv').config();  // cài env 
 const app = express();
