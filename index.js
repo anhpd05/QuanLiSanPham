@@ -27,7 +27,7 @@ app.use(methodOverride('_method'))// ÉP kiểu method : Patch
 app.use(bodyParser.urlencoded({ extended: false }))// dùng bodyparser
 
 
-app.set('views', './views');  // kết nối pug
+app.set('views', `${__dirname}/views`);  // kết nối pug
 app.set('view engine', 'pug');
 
 //Flash(thông báo trạng thái )
@@ -36,7 +36,8 @@ app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 //End Flash
 
-app.use(express.static("public")); // kết nối folder public
+app.use(express.static(`${__dirname}/public`)); 
+// Deloy online project 
 
 
 
