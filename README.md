@@ -1,13 +1,33 @@
-Một vài chức năng của dự án :
-  1.Làm giao diện danh sách sản phẩm
-  2. Tính năng lọc theo trạng thái
-  3. Tính năng tìm kiếm 
-  4. Tính năng phân trang
-  5. Thay đổi trạng thái của 1 sản phẩm 
-  6 .Thay đổi trạng thái của nhiều sản phẩm
-  7.1 : Tính năng xóa vĩnh viễn 
-  7.2 : Tính năng xóa mềm và Xóa nhiều sản phâm
-  8. Tính năng thay đổi vị trí sản phẩm và hiện ra theo thứ tự admin hoặc sản phẩm nào đc nhập vào mới nhất sẽ đẩy lên đầu
-  9.Hiện thông báo khi mà thay đổi trạng thái sản phẩm
-  10. Thêm mới 1 sản phẩm 
-  11. Thêm mới 1 sản phầm cùng ảnh đi kèm (singer)
+# 🛍️ Quản Lý Sản Phẩm 🛍️
+
+**Quản lý sản phẩm dễ dàng và hiệu quả với giao diện thân thiện và nhiều tính năng mạnh mẽ.**
+
+## ✨ Tính Năng Nổi Bật ✨
+
+*   ✅ Hiển thị danh sách sản phẩm với lọc, tìm kiếm và phân trang.
+*   ✅ Thay đổi trạng thái, xóa và sắp xếp sản phẩm linh hoạt.
+*   ✅ Thêm mới sản phẩm với ảnh và xem trước.
+*   ✅ Validate dữ liệu đầu vào đảm bảo tính chính xác.
+*   ✅ Hiển thị thông báo trực quan và dễ hiểu.
+
+## 🚀 Công Nghệ Sử Dụng 🚀
+
+*   **Frontend:** React
+*   **Backend:** Node.js
+*   **Database:** MongoDB
+*   **API:** RESTful API
+
+## 🛠️ Cài Đặt & Sử Dụng 🛠️
+
+1.  Clone dự án: `git clone https://github.com/your-username/your-project.git`
+2.  Cài đặt các dependencies: `npm install`
+3.  Chạy dự án: `npm start`
+
+## 🤝 Đóng Góp 🤝
+
+Mọi đóng góp đều được hoan nghênh! Vui lòng tạo một Pull Request hoặc issue để thảo luận về các thay đổi.
+
+## 📬 Liên Hệ 📬
+
+*   Email: anhpd.ptit@gmail.com
+
