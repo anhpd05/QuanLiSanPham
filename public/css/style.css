@@ -260,3 +260,49 @@
   }
   
   /* End product-detail */
+
+  /* Alert */
+[show-alert] {
+  position: fixed;
+  top: 70px;
+  right: 15px;
+  z-index: 9999;
+}
+
+[show-alert].alert-hidden {
+  animation-name: alert-hiddent;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes alert-hiddent {
+  from {
+    right: 15px;
+  }
+
+  to {
+    right: -100%;
+    display: none;
+  }
+}
+
+[show-alert] [alert-close] {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  background: wheat;
+  display: inline-block;
+  font-weight: 650;
+  width: 24px;
+  height: 24px;
+}
+
+[show-alert] [alert-close]:hover {
+  opacity: 1;
+}
+
+/* End alert */
