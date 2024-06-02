@@ -11,3 +11,5 @@ Một vài chức năng của dự án :
   9.Hiện thông báo khi mà thay đổi trạng thái sản phẩm
   10. Thêm mới 1 sản phẩm 
   11. Thêm mới 1 sản phầm cùng ảnh đi kèm (singer)
+  11.2 Thêm mới 1 sản phẩm cùng với ảnh  + Preview
+  12. Tạo Validate (Xác nhận dữ liệu)
