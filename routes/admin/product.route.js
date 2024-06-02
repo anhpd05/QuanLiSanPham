@@ -32,4 +32,7 @@ router.patch('/edit/:id',
     validate.createCheck ,
     controller.editPatch);
 
+router.get('/detail/:id', controller.detail);
+    
+
 module.exports = router;

@@ -165,7 +165,7 @@ module.exports.edit = async (req, res) => {
         const product = await Product.findOne(find);
         // console.log(product);
         res.render("admin/pages/products/edit" , {
-            pageTitle : "chỉnh sửa sản phẩm ",
+            pageTitle : "Chỉnh sửa sản phẩm ",
             product : product
         }) 
         
@@ -201,3 +201,25 @@ module.exports.editPatch = async (req, res) => {
     
 
 } 
+
+// [GET] : /admin/products/detail/:id
+module.exports.detail = async (req, res) => {
+    try {
+        const id = req.params.id ;
+        let find = {
+            deleted : false,
+            _id : id
+        }
+        const product = await Product.findOne(find);
+        // console.log(product);
+        res.render("admin/pages/products/detail" , {
+            pageTitle : product.title ,
+            product : product
+        });  
+    } catch (error) {
+        res.flash("error" , "Không tồn tại sản phẩm!");
+        res.redirect(`${systemConfig.prefixAdmin}/products`);
+    }
+    // console.log(req.params);
+    
+}
