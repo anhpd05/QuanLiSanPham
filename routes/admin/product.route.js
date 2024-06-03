@@ -1,13 +1,29 @@
 const express = require('express');
+const multer = require('multer'); // thư viện hỗ trợ up ảnh
+
+
+
 const router = express.Router();
 
 // Print Img
-const multer = require('multer'); // thư viện hỗ trợ up ảnh
-const storageMulter = require("../../helpers/storageMulter");
-const upload = multer({ storage: storageMulter() });
+// const storageMulter = require("../../helpers/storageMulter"); 
 //End Print Img
 
+// // Cloudinary
+// cloudinary.config({
+//     cloud_name: "dtoum0rho",
+//     api_key: "739726381273748",
+//     api_secret: "lc3-TzbqrCa7T1d0CJ8OXmYwsmU"
+//     });
+// // End Cloudinary
+
+
+const upload = multer();
+
+
 const validate = require("../../validates/admin/product.validate");
+
+const uploadCloud = require("../../middlewares/admin/uploadCloud.middleware");
 
 const controller = require("../../controllers/admin/product.controller");
 router.get('/', controller.index);
@@ -21,7 +37,8 @@ router.delete('/delete/:id', controller.deleteItem);
 router.get('/create', controller.create);
 
 router.post('/create',
-    upload.single('thumbnail') ,
+    upload.single('thumbnail'),
+    uploadCloud.upload, 
     validate.createCheck,
     controller.createPost);
 

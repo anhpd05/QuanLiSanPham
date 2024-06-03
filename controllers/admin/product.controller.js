@@ -138,12 +138,13 @@ module.exports.createPost = async (req, res) => {
         }else{
             req.body.position = parseInt(req.body.position);
         }
-        if(req.file) {
-            req.body.thumbnail = `/uploads/${req.file.filename}`;
-            // khi ngta ko up ảnh => ko die sever
-        }
+        // if(req.file) {
+        //     req.body.thumbnail = `/uploads/${req.file.filename}`;
+        //     // khi ngta ko up ảnh => ko die sever
+        // }
        
-        // console.log(req.body);
+        console.log(req.body);
+        // console.log(req.file);
         const product = new Product(req.body);
         product.save()
         req.flash("success", "Thêm sản phẩm thành công!");
