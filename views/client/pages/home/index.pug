@@ -1,4 +1,64 @@
-extend ..//../layouts/default.pug
+extends ../../layouts/default.pug
 
-block main 
-    h1 Trang chủ 
+block main
+    #{product}
+    .container
+        // Banner quảng cáo
+        .banner
+            img(src="images/banner.jpg", alt="Banner quảng cáo")
+
+        // Giới thiệu
+        section.intro
+            .row
+                .col-md-12.text-center
+                    h2 Chào mừng đến với Thế giới Điện thoại!
+                    p Tại đây, chúng tôi mang đến cho bạn những chiếc điện thoại thông minh mới nhất, công nghệ tiên tiến và trải nghiệm tuyệt vời. Khám phá ngay hôm nay!
+
+        // Jumbotron (khuyến mãi)
+        .jumbotron.text-center
+            h1 Siêu ưu đãi điện thoại!
+            p Giảm giá sốc lên đến 30% cho các dòng điện thoại mới nhất.
+
+        // Sản phẩm nổi bật
+        section.featured-products
+            h2 Sản phẩm nổi bật
+            .row
+                .col-md-4
+                    .card
+                        img.card-img-top(src="https://cdn.dummyjson.com/product-images/1/thumbnail.jpg", alt="Điện thoại 1")
+                        .card-body
+                            h5.card-title Iphone 9
+                            p.card-text Màn hình AMOLED, chip Snapdragon 8 Gen 2, camera 50MP.
+                            a.btn.btn-primary(href="#") Mua ngay
+                // ... (Thêm các sản phẩm nổi bật khác)
+
+        // Thương hiệu nổi tiếng
+        section.brands
+            h2 Thương hiệu nổi tiếng
+            .row
+                .col-md-2
+                    img(src="/uploads/1717256972328-iphon15promax.jpg", alt="Apple")
+                .col-md-2
+                    img(src="/uploads/34fd29cdfd9181908b065c1e241db3c6", alt="Samsung")
+                // ... (Thêm các thương hiệu khác)
+
+        // Tin tức và khuyến mãi
+        section.news-promotions
+            h2 Tin tức và khuyến mãi
+            .row
+                .col-md-4
+                    .card
+                        // (Hiển thị tin tức hoặc khuyến mãi)
+                // ... (Thêm các tin tức hoặc khuyến mãi khác)
+
+        // Danh sách sản phẩm điện thoại
+        .row
+            .col-md-4
+                .card
+                    img.card-img-top(src="https://cdn.dummyjson.com/product-images/4/thumbnail.jpg", alt="Điện thoại 1")
+                    .card-body
+                        h5.card-title OPPO F19s
+                        p.card-text Màn hình AMOLED, chip Snapdragon 8 Gen 2, camera 50MP.
+                        a.btn.btn-primary(href="#") Mua ngay
+            // ... (Thêm các sản phẩm điện thoại khác)
+

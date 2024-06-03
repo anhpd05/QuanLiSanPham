@@ -306,3 +306,38 @@
 }
 
 /* End alert */
+
+/* CSS tùy chỉnh cho banner */
+.banner {
+  margin-bottom: 20px;
+}
+.banner img {
+  width: 100%;
+  height: auto;
+}
+
+/* CSS tùy chỉnh cho phần giới thiệu */
+.intro {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+/* CSS tùy chỉnh cho phần sản phẩm nổi bật */
+.featured-products h2 {
+  margin-bottom: 20px;
+}
+
+/* CSS tùy chỉnh cho phần thương hiệu */
+.brands {
+  margin-bottom: 30px;
+}
+.brands img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CSS tùy chỉnh cho phần tin tức và khuyến mãi */
+.news-promotions h2 {
+  margin-bottom: 20px;
+}
