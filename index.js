@@ -1,4 +1,5 @@
 const express = require('express'); // cài đặt express
+const path = require('path');
 const methodOverride = require('method-override') ;// cài đặt method : PATCH ,DE,..
 const flash = require('express-flash'); // hiện thông báo thay đổi trạng thái
 const bodyParser = require('body-parser'); // cài đặt ép kiểu của statusChangeMulti
@@ -35,6 +36,10 @@ app.use(cookieParser('05JuLy'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 //End Flash
+
+//TimyMCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+// End TimyMCE
 
 app.use(express.static(`${__dirname}/public`)); 
 // Deloy online project 

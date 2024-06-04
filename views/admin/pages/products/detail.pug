@@ -34,7 +34,7 @@ block main
 
   if (product.description)
     div(class="mb-4") Mô tả về sản phầm :
-      div(class="mb-4") #{product.description}
+      div(class="mb-4") !{product.description}
 
   a(
     href=`${prefixAdmin}/products/edit/${product.id}`
