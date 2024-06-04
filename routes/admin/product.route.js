@@ -2,21 +2,7 @@ const express = require('express');
 const multer = require('multer'); // thư viện hỗ trợ up ảnh
 
 
-
 const router = express.Router();
-
-// Print Img
-// const storageMulter = require("../../helpers/storageMulter"); 
-//End Print Img
-
-// // Cloudinary
-// cloudinary.config({
-//     cloud_name: "dtoum0rho",
-//     api_key: "739726381273748",
-//     api_secret: "lc3-TzbqrCa7T1d0CJ8OXmYwsmU"
-//     });
-// // End Cloudinary
-
 
 const upload = multer();
 
