@@ -106,5 +106,44 @@ if(uploadImage) {
         })
     });
 }
-
 // End PreView Images
+
+
+// Sort ( Sắp xếp theo tiêu chí)
+const sort = document.querySelector("[sort]");
+if(sort){
+    let url = new URL(window.location.href);
+
+    const clearButton = document.querySelector("[sort-clear]")
+    const sortSelect = sort.querySelector("[sort-select]");
+    sortSelect.addEventListener("change" , (e) => {
+        
+        const value = e.target.value.split("-");
+        let [sortKey, sortValue] = value;
+        // console.log(sortKey);
+        url.searchParams.set("sortKey",sortKey);
+        url.searchParams.set("sortValue",sortValue);
+
+        window.location.href = url.href;
+
+    })
+
+    // Xoá Sắp xếp 
+    clearButton.addEventListener("click" , () => {
+        let url = new URL(window.location.href);
+        url.searchParams.delete("sortKey");
+        url.searchParams.delete("sortValue");
+    // End Xóa sắp xếp 
+
+        window.location.href = url.href;
+    })
+
+    const sortKey = url.searchParams.get("sortKey");
+    const sortValue = url.searchParams.get("sortValue");
+    if(sortKey && sortValue) {
+        const stringSort = `${sortKey}-${sortValue}`;
+        const optionSelect = sortSelect.querySelector(`option[value='${stringSort}']`);
+        optionSelect.selected = true;
+    }
+}
+// End Sort
