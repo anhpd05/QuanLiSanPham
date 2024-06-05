@@ -1,6 +1,26 @@
 extends ../../layouts/default.pug
+include ../../mixins/filter-status
+include ../../mixins/search
+include ../../mixins/pagination
+include ../../mixins/alert.pug
+include ../../mixins/sort-category.pug
 block main
   h1 Trang danh mục sản phẩm 
+
+  .card.mb-3
+    .card-header Bộ lọc và Tìm kiếm
+    .card-body
+      .row
+        .col-6
+          +filter-status(filterStatus)
+        .col-6
+          +search(keyword)
+  .card.mb-3
+    .card-header Sắp xếp
+    .card-body
+      .row
+        .col-4
+          +sort()
 
   .card.mb-3
     .card-header Danh sách
@@ -85,4 +105,6 @@ block main
                   button-delete
                   data-id = item.id
                   ) Xóa
+
+  script(src="/admin/js/product.js")
           
