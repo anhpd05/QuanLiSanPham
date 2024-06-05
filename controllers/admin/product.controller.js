@@ -138,8 +138,8 @@ module.exports.create = async (req, res) => {
         deleted: false
       }
     
-      const catagory = await ProductCategory.find(find);
-      const newRecord = createTreeHelpers.tree(catagory);
+      const category = await ProductCategory.find(find);
+      const newRecord = createTreeHelpers.tree(category);
     res.render("admin/pages/products/create" , {
         pageTitle : "Thêm mới sản phẩm ",
         category : newRecord,
@@ -186,11 +186,18 @@ module.exports.edit = async (req, res) => {
             deleted : false,
             _id : req.params.id
         }
+       
+        
+          const category = await ProductCategory.find( {
+            deleted: false
+          });
+          const newRecord = createTreeHelpers.tree(category);
         const product = await Product.findOne(find);
         // console.log(product);
         res.render("admin/pages/products/edit" , {
             pageTitle : "Chỉnh sửa sản phẩm ",
-            product : product
+            product : product,
+            category :newRecord
         }) 
         
     } catch (error) {
