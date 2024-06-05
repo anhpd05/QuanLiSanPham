@@ -3,6 +3,7 @@ const systemConfig = require("../../config/system");
 const filterStatusHelpers = require("../../helpers/filter-status");
 const searchHelpers = require("../../helpers/search");
 const paginationHelpers = require("../../helpers/pagination");
+const createTreeHelpers = require("../../helpers/createTree");
 
 
 // [GET] : /admin/products-catagory
@@ -16,6 +17,8 @@ module.exports.index = async (req, res) => {
     if(req.query.status){
         find.status = req.query.status;
     }
+
+
 // End 16.1.3 
 
 //16.1.3 : Tối ưu lại những phần trạng thái product khi đc chọn => xanh
@@ -59,9 +62,11 @@ module.exports.index = async (req, res) => {
     .sort(sort)
     
     const records = await ProductCategory.find(find);
+
+    const newRecords = createTreeHelpers.tree(records);
     res.render("admin/pages/products-category/index.pug" , {
         pageTitle : "Danh mục sản phẩm ",
-        records : records,
+        records : newRecords,
         filterStatus : filterStatus,
         keyword : objectSearch.keyword,
         pagination: objectPagination
@@ -74,25 +79,11 @@ module.exports.create = async (req, res) => {
         deleted : false,
     }
 
-    function createTree(arr,parentId = "") {
-        const tree =[];
-        arr.forEach( item => {
-            if(item.parent_id === parentId) {
-                const NewItem = item ; // arr first only node Tree
-                const children = createTree(arr, item.id)
-                if(children.length > 0) {
-                    NewItem.children = children;
-                }
-                tree.push(NewItem)
-            }
 
-        })
-        return tree
-    }
 
     const records = await ProductCategory.find(find)
 
-    const newRecords = createTree(records);
+    const newRecords = createTreeHelpers.tree(records);
     console.log(newRecords);
 
     res.render("admin/pages/products-category/create.pug" , {
