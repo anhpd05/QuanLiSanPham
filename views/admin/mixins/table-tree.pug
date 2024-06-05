@@ -43,12 +43,12 @@ mixin table-tree(items, level=1)
             class="badge badge-danger"
             ) Dừng hoạt động
       td
+        //- a(
+        //-   href=`${prefixAdmin}/products-category/detail/${item.id}`
+        //-   class ="btn btn-secondary btn-sm"
+        //- ) Chi tiết
         a(
-          href=`${prefitAdmin}/products-category/detail/${item.id}`
-          class ="btn btn-secondary btn-sm"
-        ) Chi tiết
-        a(
-          href=`${prefitAdmin}/products-category/edit/${item.id}`
+          href=`${prefixAdmin}/products-category/edit/${item.id}`
           class="btn btn-warning btn-sm ml-1"
         ) Sửa
         button(

@@ -112,3 +112,50 @@ module.exports.createPost = async (req, res) => {
         res.redirect(`${systemConfig.prefixAdmin}/products-category`);
       }
 } 
+
+//[GET] admin/product-category/edit/:id
+module.exports.edit = async (req, res) => {
+    const id = req.params.id;
+    const find = {
+      _id: id,
+      deleted: false,
+    }
+    const data = await ProductCategory.findOne(find);
+  
+    const records = await ProductCategory.find({ deleted: false });
+    const newRecords = createTreeHelpers.tree(records);
+  
+    res.render("admin/pages/products-category/edit", {
+      pageTitle: "Trang sửa danh mục sản phẩm",
+      data: data,
+      records: newRecords,
+    });
+  };
+
+//[PATCH] admin/product-category/edit/:id
+module.exports.editPatch = async (req, res) => {
+    try {
+      const id = req.params.id;
+  
+      req.body.position = parseInt(req.body.position);
+  
+      await ProductCategory.updateOne({ _id: id }, req.body)
+      req.flash("success", "Cập nhập danh mục thành công!");
+      res.redirect("back");
+    } catch (error) {
+      req.flash("errer", "Cập nhập danh mục thất bại!");
+      res.redirect("back");
+    }
+  }
+
+// [DELETE] /admin/product-category/delete/:id
+module.exports.deleteItem = async (req, res) => {
+    const id = req.params.id;
+  
+    await ProductCategory.updateOne({_id:id},{
+        deleted : true,
+        deletedAt: new Date
+    })
+    req.flash('success', `Đã xoá thành công sản phẩm!`);
+    res.redirect('back');
+  }

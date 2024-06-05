@@ -6,10 +6,9 @@ block main
   +alert-error(5000)
   +alert-success(5000)
 
-  h1(class="mb-4") Tạo mới danh mục sản phẩm
-
+  h1(class="mb-4") Chỉnh sửa danh mục sản phẩm
   form(
-    action= `${prefixAdmin}/products-category/create`
+    action= `${prefixAdmin}/products-category/edit/${data.id}?_method=PATCH`
     id= "form-create-product"
     method= "POST"
     enctype="multipart/form-data"
@@ -22,24 +21,15 @@ block main
         id="title"
         name="title"
         required
+        value= data.title
       )
-    div(class="form-group")
-      label(for="parent_id") Danh mục cha 
-      //- input(
-      //-   type="text"
-        class="form-control"
-        id="parent_id"
-        name="parent_id"
-      //- )
-      select(
-        class="form-control"
-        id="parent_id"
-        name="parent_id"
-      )
-        option(value="") --Chọn danh mục cha--
-          if(records)
-            +select-tree(records)
-          
+    select(
+      class="form-control"
+      id="parent_id"
+      name="parent_id"
+    )
+      option(value="") --Chọn danh mục cha--
+        +select-tree(records, 1, data.parent_id)
     div(class="form-group")
       label(for="desc") Mô tả
       textarea(
@@ -47,7 +37,7 @@ block main
         id="desc"
         name="description"
         rows="5"
-      )
+      ) #{data.description}
     div(
       class="form-group"
       upload-image
@@ -63,7 +53,7 @@ block main
       )
       span(class="box-image")
         img(
-          src=""
+          src= data.thumbnail
           upload-image-preview 
           class="image-preview"
         )
@@ -77,6 +67,7 @@ block main
         name="position"
         placeholder="Tự động tăng"
         min="1"
+        value= data.position 
       )
     div(class="form-group form-check form-check-inline")
       input(
@@ -85,7 +76,7 @@ block main
         id="statusActive"
         name="status"
         value="active"
-        checked
+        checked =(data.status === "active" ? true : false)
       )
       lable(for="statusActive" class="form-check-label") Hoạt động 
     div(class="form-group form-check form-check-inline")
@@ -95,12 +86,13 @@ block main
         id="statusActive"
         name="status"
         value="inactive"
+        checked = (data.status === 'inactive' ? true : false)
         )
       lable(for="statusActive" class="form-check-label") Dừng Hoạt động 
     div(class="form-group")
       button(
         type="submit"
         class="btn btn-primary"
-      ) Tạo mới 
+      ) Chỉnh sửa 
 
-//-   script(src="/admin/js/product.js")
+  script(src="/admin/js/product.js")
