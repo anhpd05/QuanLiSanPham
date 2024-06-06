@@ -1,3 +1,20 @@
+//- nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+//-   .sidebar-sticky
+//-     ul.nav.flex-column(current-page=currentPage)
+
+//-       li.nav-item
+//-         a.nav-link(page='products' href='/admin/products')
+//-           span(data-feather='shopping-cart')
+//-           |Products
+//-       li.nav-item
+//-         a.nav-link(page = 'categories' href='/admin/categories')
+//-           span(data-feather='layers')
+//-           |Categories
+//-       li.nav-item
+//-         a.nav-link(page = 'search-keys' href='/admin/search-keys')
+//-           span(data-feather='bar-chart-2')
+//-           |Search-keys
+
 .sider
   .inner-menu 
     ul
@@ -7,3 +24,5 @@
         a(href=`${prefixAdmin}/products-category`) Mục sản phẩm 
       li
         a(href=`${prefixAdmin}/products`) Danh sách sản phẩm 
+      li 
+        a(href=`${prefixAdmin}/roles`) Phân quyền
