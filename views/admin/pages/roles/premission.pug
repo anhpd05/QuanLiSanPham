@@ -27,10 +27,10 @@ block main
         each item in records 
           th(class="text-center") #{item.title}
     tbody
-      tr(data-name="id" )
+      tr(data-name="id" class="d-none")
         td
         each item in records  
-          td(class="text-center d-none ")
+          td(class="text-center")
             input(type="text" value = item.id)
       tr
         td(colspan="3")
