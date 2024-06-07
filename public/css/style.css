@@ -341,3 +341,59 @@
 .news-promotions h2 {
   margin-bottom: 20px;
 }
+/* Sale off section */
+
+.col.bg-white.p-2.rounded.d-flex.flex-column { 
+  background-color: #fff; /* Màu trắng cho nền sản phẩm */
+  border: 1px solid #ddd; /* Viền xám nhạt */
+  transition: transform 0.2s; /* Hiệu ứng hover */
+}
+
+.col.bg-white.p-2.rounded.d-flex.flex-column:hover {
+  transform: translateY(-5px); /* Nâng sản phẩm lên khi hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Đổ bóng khi hover */
+}
+
+.col.bg-white.p-2.rounded.d-flex.flex-column img {
+  max-height: 200px; /* Giới hạn chiều cao ảnh */
+  object-fit: cover; /* Giữ tỷ lệ ảnh, cắt nếu cần */
+}
+
+.fs-5.text-primary.fw-bold {
+  color: #007bff; /* Màu xanh Bootstrap cho giá */
+  font-size: 20px;
+}
+
+.progress {
+  height: 16px; /* Độ dày thanh progress */
+}
+
+.progress-bar.bg-info {
+  background-color: #17a2b8; /* Màu xanh lam nhạt */
+}
+/* Sale off section */
+.row.mb-3 span.fw-bold.fs-5 {
+
+  font-size: 1.8rem; /* Tăng kích thước chữ */
+  font-weight: 780; /* Tăng độ đậm */
+}
+
+.col.bg-white.p-2.rounded.d-flex.flex-column { 
+  /* ... (các thuộc tính khác) */
+  margin-right: 15px; /* Tạo khoảng cách bên phải cho mỗi box */
+  margin-left: 15px; 
+}
+
+.col.bg-white.p-2.rounded.d-flex.flex-column:last-child {
+  margin-right: 13px; /* Loại bỏ margin-right cho box cuối cùng */
+}
+
+.col.bg-white.p-2.rounded.d-flex.flex-column a.fs-6.text-dark.text-decoration-none {
+  font-family: 'Roboto', sans-serif; /* Thay đổi font chữ (ví dụ: Roboto) */
+  font-size: 19px;
+}
+section.container-lg.bg-info.d-flex.flex-column.mb-3.p-4.rounded.ml-2.mr-3 {
+  grid-column: 1 / -1 
+}
+
+
