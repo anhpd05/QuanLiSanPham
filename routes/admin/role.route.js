@@ -14,4 +14,8 @@ router.patch('/edit/:id', controller.editPatch);
 
 router.delete('/delete/:id', controller.delete);
 
+router.get('/premissions', controller.premissions);
+
+router.patch('/premissions', controller.premissionsPatch);
+
 module.exports = router;

@@ -392,8 +392,5 @@
   font-family: 'Roboto', sans-serif; /* Thay đổi font chữ (ví dụ: Roboto) */
   font-size: 19px;
 }
-section.container-lg.bg-info.d-flex.flex-column.mb-3.p-4.rounded.ml-2.mr-3 {
-  grid-column: 1 / -1 
-}
 
 
