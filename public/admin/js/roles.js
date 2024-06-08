@@ -95,7 +95,6 @@ if(dataRecords) {
       console.log(input);
       // console.log(index);
       console.log("--------");
-      // const x = s.querySelectorAll()
     })
   })
   // console.log(records)
