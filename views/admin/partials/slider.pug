@@ -1,32 +1,46 @@
-//- nav.col-md-2.d-none.d-md-block.bg-light.sidebar
-//-   .sidebar-sticky
-//-     ul.nav.flex-column(current-page=currentPage)
+link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" )
+nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+  .sidebar-sticky
+    ul.nav.flex-column(current-page=currentPage)
+      li.nav-item
+        a.nav-link(page = 'search-keys' href=`${prefixAdmin}/dashboard`)
+          span(data-feather='bar-chart-2')
+          | Trang tổng quát
+      li.nav-item
+        a.nav-link(page='products' href=`${prefixAdmin}/products`)
+          span(data-feather='shopping-cart')
+          |Danh sách sản phẩm
+      li.nav-item
+        a.nav-link(page = 'categories' href=`${prefixAdmin}/products-category`)
+          span(data-feather='layers')
+          |Danh mục sản phẩm
+      li.nav-item
+        a.nav-link(page = 'search-keys' href=`${prefixAdmin}/roles`)
+          span(data-feather='users')
+          |Nhóm quyền
+      li.nav-item
+        a.nav-link(page = 'search-keys' href=`${prefixAdmin}/roles/premissions`)
+          span(data-feather='check-square')
+          |Phân quyền
+      li.nav-item
+        a.nav-link(page = 'search-keys' href=`${prefixAdmin}/accounts`)
+          span(data-feather='list')
+          |Danh sách tài khoản
 
-//-       li.nav-item
-//-         a.nav-link(page='products' href='/admin/products')
-//-           span(data-feather='shopping-cart')
-//-           |Products
-//-       li.nav-item
-//-         a.nav-link(page = 'categories' href='/admin/categories')
-//-           span(data-feather='layers')
-//-           |Categories
-//-       li.nav-item
-//-         a.nav-link(page = 'search-keys' href='/admin/search-keys')
-//-           span(data-feather='bar-chart-2')
-//-           |Search-keys
 
-.sider
-  .inner-menu 
-    ul
-      li
-        a(href=`${prefixAdmin}/dashboard`) Tổng quan
-      li
-        a(href=`${prefixAdmin}/products-category`) Mục sản phẩm 
-      li
-        a(href=`${prefixAdmin}/products`) Danh sách sản phẩm 
-      li 
-        a(href=`${prefixAdmin}/roles`) Nhóm quyền
-      li 
-        a(href=`${prefixAdmin}/roles/premissions`) Phân quyền
-      li 
-        a(href=`${prefixAdmin}/accounts`) Danh sách tài khoản
+
+//- .sider
+//-   .inner-menu 
+//-     ul
+//-       li
+//-         a(href=`${prefixAdmin}/dashboard`) Tổng quan
+//-       li
+//-         a(href=`${prefixAdmin}/products-category`) Mục sản phẩm 
+//-       li
+//-         a(href=`${prefixAdmin}/products`) Danh sách sản phẩm 
+//-       li 
+//-         a(href=`${prefixAdmin}/roles`) Nhóm quyền
+//-       li 
+//-         a(href=`${prefixAdmin}/roles/premissions`) Phân quyền
+//-       li 
+//-         a(href=`${prefixAdmin}/accounts`) Danh sách tài khoản

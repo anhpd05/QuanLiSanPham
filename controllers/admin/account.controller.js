@@ -98,7 +98,6 @@ module.exports.editPatch = async (req, res) => {
         _id : { $ne: id } 
         // Query => không truy vấn đến id này => doc mongoose
     })
-    // Check xem email có tồn tại không 
 
     if(emailExist) {
         req.flash("error", `Email ${req.body.email} đã tồn tại!`);
