@@ -1,6 +1,7 @@
 const Role = require("../../models/role.model");
 const Account = require("../../models/account.model");
 const systemConfig = require("../../config/system");
+const filterStatusHelpers = require("../../helpers/filter-status");
 const md5 = require('md5');
 
 
@@ -119,4 +120,18 @@ module.exports.editPatch = async (req, res) => {
   }
 
   res.redirect(`back`);
+}
+
+// [DELETE] /admin/accounts/delete/:id
+module.exports.delete = async (req, res) => {
+  const id = req.params.id;
+  // console.log(id);
+
+  // await Product.deleteOne({ _id: id });
+  await Account.updateOne({_id:id},{
+      deleted : true,
+      deletedAt: new Date
+  })
+  req.flash('success', `Đã xoá thành công tài khoản!`);
+  res.redirect('back');
 }

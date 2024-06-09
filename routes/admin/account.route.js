@@ -27,6 +27,8 @@ router.patch('/edit/:id',
     uploadCloud.upload,
     validates.editPatch,
     controller.editPatch);
+
+router.delete('/delete/:id', controller.delete);
     
 
 module.exports = router;
