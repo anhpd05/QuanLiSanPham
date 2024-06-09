@@ -5,27 +5,32 @@ nav.col-md-2.d-none.d-md-block.bg-light.sidebar
       li.nav-item
         a.nav-link(page = 'search-keys' href=`${prefixAdmin}/dashboard`)
           span(data-feather='bar-chart-2')
-          | Trang tổng quát
-      li.nav-item
-        a.nav-link(page='products' href=`${prefixAdmin}/products`)
-          span(data-feather='shopping-cart')
-          |Danh sách sản phẩm
-      li.nav-item
-        a.nav-link(page = 'categories' href=`${prefixAdmin}/products-category`)
-          span(data-feather='layers')
-          |Danh mục sản phẩm
-      li.nav-item
-        a.nav-link(page = 'search-keys' href=`${prefixAdmin}/roles`)
-          span(data-feather='users')
-          |Nhóm quyền
-      li.nav-item
-        a.nav-link(page = 'search-keys' href=`${prefixAdmin}/roles/premissions`)
-          span(data-feather='check-square')
-          |Phân quyền
-      li.nav-item
-        a.nav-link(page = 'search-keys' href=`${prefixAdmin}/accounts`)
-          span(data-feather='list')
-          |Danh sách tài khoản
+          |Trang tổng quát
+      if(role.permissions.includes('products_view'))
+        li.nav-item
+          a.nav-link(page='products' href=`${prefixAdmin}/products`)
+            span(data-feather='shopping-cart')
+            |Danh sách sản phẩm
+      if(role.permissions.includes('products-category_view'))
+        li.nav-item
+          a.nav-link(page = 'categories' href=`${prefixAdmin}/products-category`)
+            span(data-feather='layers')
+            |Danh mục sản phẩm
+      if(role.permissions.includes('roles_view'))
+        li.nav-item
+          a.nav-link(page = 'search-keys' href=`${prefixAdmin}/roles`)
+            span(data-feather='users')
+            |Nhóm quyền
+      if(role.permissions.includes('roles_permissions'))
+        li.nav-item
+          a.nav-link(page = 'search-keys' href=`${prefixAdmin}/roles/premissions`)
+            span(data-feather='check-square')
+            |Phân quyền
+      if(role.permissions.includes('accounts_view'))
+        li.nav-item
+          a.nav-link(page = 'search-keys' href=`${prefixAdmin}/accounts`)
+            span(data-feather='list')
+            |Danh sách tài khoản
 
 
 

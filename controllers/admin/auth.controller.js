@@ -35,7 +35,7 @@ module.exports.loginPost = async (req, res) => {
     }
 
     if(user.status == "inactive"){
-        req.flash("error" , "Tài khoản cảu bạn đã bị khóa do vi phạm!");
+        req.flash("error" , "Tài khoản của bạn đã bị khóa do vi phạm!");
         res.redirect("back");
         return;
     }
