@@ -4,6 +4,7 @@ const productCategoryRoutes = require("./products-category.route");
 const systemConfig = require("../../config/system");
 const rolesRouter = require("./role.route");
 const accountsRouter = require("./account.route");
+const authRouter = require("./auth.route");
 
 // tạo cái biến /admin để sang bên config để sau sửa cho dễ
 
@@ -19,4 +20,6 @@ module.exports = (app) => {
     app.use( PATH_ADMIN + '/roles' , rolesRouter)
 
     app.use( PATH_ADMIN + '/accounts' , accountsRouter)
+
+    app.use( PATH_ADMIN + '/auth' , authRouter)
 }
