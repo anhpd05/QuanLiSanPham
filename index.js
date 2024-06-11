@@ -5,11 +5,13 @@ const flash = require('express-flash'); // hiện thông báo thay đổi trạn
 const bodyParser = require('body-parser'); // cài đặt ép kiểu của statusChangeMulti
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const moment = require('moment'); // lấy ra time chuẩn 
 
 
 require('dotenv').config();  // cài env 
 const app = express();
 const port = process.env.PORT // kết nối env
+
 
 const route = require("./routes/client/index.route.js") ;
 // Kết nối route của client
@@ -52,6 +54,7 @@ routeAdmin(app);
 
 // App Local Variable 
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
+app.locals.moment = moment;
 
 
 app.listen(port, () => {

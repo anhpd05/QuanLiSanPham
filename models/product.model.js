@@ -7,6 +7,13 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: ""
       },
+    createdBy :{
+        account_id : String,
+        createdAt : {
+            type : Date ,
+            default : Date.now
+        }
+    },
     description: String,
     price: Number,
     discountPercentage: Number,

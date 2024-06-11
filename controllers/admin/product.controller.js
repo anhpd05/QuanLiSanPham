@@ -1,4 +1,5 @@
 const Product = require("../../models/product.model");
+const Account = require("../../models/account.model");
 const ProductCategory = require("../../models/product-category.model");
 const filterStatusHelpers = require("../../helpers/filter-status");
 const searchHelpers = require("../../helpers/search");
@@ -7,7 +8,6 @@ const systemConfig = require("../../config/system");
 const createTreeHelpers = require("../../helpers/createTree");
 // [GET] : /admin/products
 module.exports.index = async (req, res) => {
-
 // 16.1.3 : tạo ra phần lọc theo trạng thái 
     // console.log(req.query.status); 
     let find = {
@@ -58,6 +58,15 @@ console.log(req.query)
     .skip(objectPagination.skip)
     .sort(sort)
     // console.log(products);
+    for (const product of products) {
+        const user = await Account.findOne({
+            _id : product.createdBy.account_id
+        });
+        if(user){
+            product.accountFullName = user.fullName;
+        }
+    }
+
     res.render("admin/pages/products/index.pug" , {
         pageTitle : "Trang danh sách sản phẩm ",
         products : products,
@@ -161,13 +170,19 @@ module.exports.createPost = async (req, res) => {
         }else{
             req.body.position = parseInt(req.body.position);
         }
+
+
         // if(req.file) {
         //     req.body.thumbnail = `/uploads/${req.file.filename}`;
         //     // khi ngta ko up ảnh => ko die sever
         // }
        
-        console.log(req.body);
-        // console.log(req.file);
+        // console.log(req.body);
+        
+        req.body.createdBy = {
+            account_id: res.locals.user.id
+        }
+
         const product = new Product(req.body);
         product.save()
         req.flash("success", "Thêm sản phẩm thành công!");
@@ -175,6 +190,7 @@ module.exports.createPost = async (req, res) => {
     } catch (error) {
         req.flash("error", "Thêm sản phẩm thất bại!");
         res.redirect(`${systemConfig.prefixAdmin}/products`);
+        // console.log(error);
     }
 
 } 

@@ -3,8 +3,9 @@ include ../../mixins/filter-status
 include ../../mixins/search
 include ../../mixins/pagination
 include ../../mixins/form-change-multi
-include ../../mixins/alert.pug
-include ../../mixins/sort.pug
+include ../../mixins/alert
+include ../../mixins/sort
+include ../../mixins/moment
 block main 
   //- h1 Trang sản phẩm
   +alert-success(5000)
@@ -52,6 +53,7 @@ block main
               th Giá
               th Vị trí
               th Trạng thái
+              th Người tạo
               th Hành động
           tbody
             each item, index in products
@@ -98,6 +100,10 @@ block main
                         data-id=item.id
                         class="badge badge-danger"
                       ) Dừng hoạt động
+                td 
+                  p #{item.accountFullName}
+                  p 
+                    +formatDateTime(item.createdBy.createdAt)
                 td
                   if(role.permissions.includes('products_edit'))
                     a(
