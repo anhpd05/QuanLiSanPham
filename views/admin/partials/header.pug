@@ -6,6 +6,10 @@ header.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
     li.nav-item.text-nowrap
       div(class="text-right")
         a(
+          href= `${prefixAdmin}/my-account`
+          class="btn btn-primary btn-sm mr-2"
+        ) Xin chào , #{user.fullName}
+        a(
           href=`${prefixAdmin}/auth/logout`
           class="btn btn-danger btn-sm"
         ) Đăng xuất
