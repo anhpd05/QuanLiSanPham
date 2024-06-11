@@ -49,7 +49,7 @@ if(req.query.sortKey && req.query.sortValue) {
 }else {
     sort.position = "desc"
 }
-console.log(req.query)
+// console.log(req.query)
 //End Sort 
   
     const products = await Product
@@ -57,7 +57,8 @@ console.log(req.query)
     .limit(objectPagination.limitItem)
     .skip(objectPagination.skip)
     .sort(sort)
-    // console.log(products);
+
+    // Lây ra thông tin người tạo
     for (const product of products) {
         const user = await Account.findOne({
             _id : product.createdBy.account_id
@@ -65,6 +66,15 @@ console.log(req.query)
         if(user){
             product.accountFullName = user.fullName;
         }
+    // lấy ra thông tin người cập nhật
+        const updatedBy = product.updatedBy[product.updatedBy.length - 1]
+        if(updatedBy){
+            const userUpdated = await Account.findOne({
+                _id : updatedBy.account_id
+            })
+            updatedBy.accountFullName = userUpdated.fullName
+        }
+        console.log(product)
     }
 
     res.render("admin/pages/products/index.pug" , {
@@ -79,8 +89,16 @@ console.log(req.query)
 module.exports.changeStatus = async (req, res) => {
     const status = req.params.status
     const id = req.params.id
+    const updatedBy = [{
+        account_id : res.locals.user.id,
+        updatedAt : new Date()
+    }];
 
-    await Product.updateOne({_id : id } , {status : status});
+    await Product.updateOne({_id : id } , {
+        status : status,
+        $push : {updatedBy : updatedBy}
+
+    });
     req.flash('success', `Đã thay đổi trạng thái  thành công sản phẩm!`);
     res.redirect('back')
 }
@@ -89,15 +107,27 @@ module.exports.changeMulti = async (req, res) => {
     // console.log(req.body)
     const type = req.body.type ;
     const ids = req.body.ids.split(", ") ;
+    const updatedBy = [{
+        account_id : res.locals.user.id,
+        updatedAt : new Date()
+    }];
+
     // console.log(ids);
     switch (type) {
         case "active":
-            await Product.updateMany({_id:{ $in : ids}}, {status : type})
+            await Product.updateMany({_id:{ $in : ids}}, {
+                status : type,
+                $push : {updatedBy : updatedBy}
+
+            })
             req.flash('success', `Đã cập nhập trạng thái ${ids.length} sản phẩm!`);
             break;
 
         case "inactive":
-            await Product.updateMany({_id:{ $in : ids}}, {status : type})
+            await Product.updateMany({_id:{ $in : ids}}, {
+                status : type,
+                $push : {updatedBy : updatedBy}
+            })
             req.flash('success', `Đã cập nhập trạng thái ${ids.length} sản phẩm!`);
             break;
         case "delete-all":
@@ -119,7 +149,10 @@ module.exports.changeMulti = async (req, res) => {
                 position = parseInt(position)
                 console.log(id)
                 console.log(position)
-            await Product.updateOne({_id : id } , {position : position});    
+            await Product.updateOne({_id : id } , {
+                position : position,
+                $push : {updatedBy : updatedBy}
+            });    
             
             }
             req.flash('success', `Đã thay đổi vị trí ${ids.length} sản phẩm!`);
@@ -238,7 +271,7 @@ module.exports.edit = async (req, res) => {
 module.exports.editPatch = async (req, res) => {
 
     const id = req.params.id;
-    console.log(req.body);
+    // console.log(req.body);
     req.body.price = parseInt(req.body.price);
     req.body.price.discountPercentage = parseInt(req.body.discountPercentage);
     req.body.price.stock = parseInt(req.body.stock);
@@ -247,7 +280,16 @@ module.exports.editPatch = async (req, res) => {
         req.body.thumbnail = `/uploads/${req.file.filename}`;
     }
     try {
-        await Product.updateOne({_id : id }, req.body)
+        const updatedBy = [{
+            account_id : res.locals.user.id,
+            updatedAt : new Date()
+        }]
+        // req.body.updatedBy = updateBy
+
+        await Product.updateOne({_id : id }, {
+            ...req.body,
+            $push : {updatedBy : updatedBy}
+    })
         req.flash("success" , "Cập nhật thành công!")
         res.redirect("back");
     } catch (error) {
