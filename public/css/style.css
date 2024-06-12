@@ -49,7 +49,7 @@
   
   /* End box-head */
   
-  /* product-item */
+  product-item
   .product-item {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -83,6 +83,7 @@
   
   .product-item .inner-content {
     padding: 15px;
+    height: 180px;
   }
   
   .product-item .inner-content .inner-title {
@@ -105,13 +106,104 @@
   
   .product-item .inner-content .inner-discount {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 630;
     color: white;
     background: red;
     display: inline-block;
     padding: 3px 10px;
     border-radius: 8px;
   }
+  
+/* Định dạng chung cho phần sản phẩm */
+.featured-products {
+  background-color: #f9f9f9;
+  padding: 20px 0;
+}
+
+/* Định dạng cho từng sản phẩm */
+.product-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 10px; /* Bo tròn các góc */
+  transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+.inner-content {
+  padding: 10px;
+  font-family: 'Arial', sans-serif; /* Phông chữ mềm mại */
+}
+
+
+.inner-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.inner-featured {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff5722;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 1.1em; /* Phông chữ to hơn */
+  border-radius: 5px 0 5px 5px; /* Bo tròn một nửa bên gần sản phẩm */
+  transition: transform 0.3s ease; /* Hiệu ứng khi nhấp */
+}
+
+.inner-content {
+  padding: 10px;
+}
+
+.inner-title {
+  font-size: 1.2em;
+  color: #333;
+  text-decoration: none;
+}
+
+.inner-price-new {
+  color: #ff5722;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.inner-price-old {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 4px;
+}
+
+.inner-discount {
+  color: #ff5722;
+  font-weight: bold;
+  float: left;
+  margin-left: 4px;
+}
+/* Hiệu ứng khi nhấp vào sản phẩm */
+.product-item:hover {
+  transform: translateY(-5px); /* Nâng sản phẩm lên khi hover */
+  cursor: pointer;
+}
+/* Hiệu ứng khi nhấp vào sản phẩm */
+.product-item:hover .inner-featured {
+  transform: scale(1.1); /* Phóng to chữ nổi bật khi hover */
+  background-color: #e64a19; /* Thay đổi màu nền */
+  cursor: pointer;
+  transform: translateY(-10px);
+}
+
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+  .col-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+}
+
   
   /* End product-item */
   

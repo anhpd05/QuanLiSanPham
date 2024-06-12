@@ -20,6 +20,8 @@ block main
                 src=item.thumbnail ,
                 alt=item.title
               )
+              if(item.featured === "1")
+                .inner-featured nổi bật
             .inner-content
               a(
                 href=`/products/${item.slug}`

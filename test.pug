@@ -1,19 +1,23 @@
-doctype html 
-html
-    head 
-        title #{pageTitle}
-
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" )
-
-        link(rel="stylesheet", href="/css/style.css")
-    
-    body 
-        include ../partials/header.pug
-
-        block main
-
-        include ../partials/footer.pug
-
-        script(src="/js/script.js") 
-        script(src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js")
-        script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js")
+    //-   .container.my-3
+    .row
+        .col-12
+            +box-head("Sản phẩm nổi bật")
+    .row
+        each item in productsFeatured
+            .col-4.mb-3
+                .product-item
+                    .inner-image
+                        img(
+                            src=item.thumbnail, a
+                            lt=item.title
+                        )
+                        if(item.featured === "1")
+                            .inner-featured nổi bật
+                    .inner-content
+                        a(
+                            href= `/products/detail/${item.slug}`
+                            class="inner-title"
+                        ) #{item.title} 
+                        .inner-price-new #{item.newPrice}$
+                        .inner-price-old #{item.price}$
+                        .inner-discount -#{item.discountPercentage}%   

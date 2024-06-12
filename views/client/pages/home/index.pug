@@ -1,4 +1,5 @@
 extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
 
 block main
         .container
@@ -80,34 +81,29 @@ block main
 
             // Sản phẩm nổi bật
             section.featured-products
-                h2 Sản phẩm nổi bật
                 .row
-                    .col-md-4
-                        .card
-                            img.card-img-top(src="/uploads/1717256972328-iphon15promax.jpg", alt="Điện thoại 1")
-                            .card-body
-                                h5.card-title Iphone 15 ProMax
-                                p.card-text Màn hình AMOLED, chip Snapdragon 8 Gen 2, camera 50MP.
-                                a.btn.btn-primary(href="http://localhost:3000/products/iphone-15-pro-max") Mua ngay
-                    // ... (Thêm các sản phẩm nổi bật khác)
-
-                    .col-md-4
-                        .card
-                            img.card-img-top(src="/uploads/1717256972328-iphon15promax.jpg", alt="Điện thoại 1")
-                            .card-body
-                                h5.card-title Iphone 15 ProMax
-                                p.card-text Màn hình AMOLED, chip Snapdragon 8 Gen 2, camera 50MP.
-                                a.btn.btn-primary(href="http://localhost:3000/products/iphone-15-pro-max") Mua ngay
-                    // ... (Thêm các sản phẩm nổi bật khác)
-
-                    .col-md-4
-                        .card
-                            img.card-img-top(src="/uploads/1717256972328-iphon15promax.jpg", alt="Điện thoại 1")
-                            .card-body
-                                h5.card-title Iphone 15 ProMax
-                                p.card-text Màn hình AMOLED, chip Snapdragon 8 Gen 2, camera 50MP.
-                                a.btn.btn-primary(href="http://localhost:3000/products/iphone-15-pro-max") Mua ngay
-                    // ... (Thêm các sản phẩm nổi bật khác)
+                    .col-12
+                        +box-head("Sản phẩm nổi bật")
+                .row
+                    each item in productsFeatured
+                        .col-4.mb-3
+                            .product-item
+                                .inner-image
+                                    img(
+                                        src=item.thumbnail, a
+                                        lt=item.title
+                                    )
+                                    if(item.featured === "1")
+                                        .inner-featured nổi bật
+                                .inner-content
+                                    a(
+                                        href= `/products/detail/${item.slug}`
+                                        class="inner-title"
+                                    ) #{item.title} 
+                                    div !{item.description}
+                                    .inner-price-new !{item.newPrice}$
+                                    .inner-price-old #{item.price}$
+                                    .inner-discount -#{item.discountPercentage}%   
 
             // Thương hiệu nổi tiếng
             section.brands

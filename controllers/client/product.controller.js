@@ -1,5 +1,5 @@
 const Product = require("../../models/product.model");
-
+const productsNewPriceHelper = require("../../helpers/product.priceNew")
 // [GET] : /products
 module.exports.index =  async (req, res) => {
     const products = await Product.find({
