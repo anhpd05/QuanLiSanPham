@@ -27,7 +27,7 @@
 /* End Header */
 
 /* Body */
-/* .body .sider {
+.body .sider {
   width: 150px;
   background: #323232;
   color: #fff;
@@ -42,7 +42,7 @@
   position: relative;
   left: 150px;
   width: calc(100% - 180px);
-} */
+}
 
 /* End Body */
 
