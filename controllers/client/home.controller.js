@@ -10,7 +10,7 @@ module.exports.index = async (req, res) => {
         featured : "1"
     }).limit(3).sort({position : "asc"})
     const newProduct = productsNewPriceHelper.priceNew(productsFeatured);
-    console.log(newProduct)
+    // console.log(newProduct)
 //Hết Lấy ra sản phẩm nổi bật
     res.render("client/pages/home/index.pug" , {
         pageTitle : "Trang chủ",
