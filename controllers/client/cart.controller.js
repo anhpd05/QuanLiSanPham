@@ -20,14 +20,12 @@ module.exports.addPost = async (req, res) => {
     if(existProductInCart){
         // console.log(" cập nhật quantity")
         const newQuantity = quantity + existProductInCart.quantity ;
-        console.log(newQuantity);
+        // console.log(newQuantity);
         await Cart.updateOne({
             _id : cartId ,
             'products.product_id' : productId,
-
         } , {
             'products.$.quantity' : newQuantity
-
         } )
 
     } else {
@@ -41,10 +39,6 @@ module.exports.addPost = async (req, res) => {
         } , { $push  : { products : ObjectCart }})
         req.flash("success" , "Thêm sản phẩm vào giỏ hàng thành công ! ")
     }
-    // console.log(cartId);
-    // console.log(productId);
-    // console.log(quantity);
-
     
     res.redirect("back");
 }
