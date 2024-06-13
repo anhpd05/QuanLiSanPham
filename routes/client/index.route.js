@@ -8,7 +8,7 @@ module.exports = (app) => {
 
     app.use(categoryMiddleware.category );
     
-    app.use(cartMiddleware.cart );
+    app.use(cartMiddleware.cartId );
 
     app.use('/' , homeRoutes);
     

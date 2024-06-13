@@ -42,7 +42,7 @@ module.exports.detail =  async (req, res) => {
       
             product.category = category;
           }
-        console.log(product.category.slug)
+        // console.log(product.category.slug)
         
         const newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(0);
         product.priceNew = newPrice

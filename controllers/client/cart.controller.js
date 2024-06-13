@@ -16,31 +16,35 @@ module.exports.addPost = async (req, res) => {
         _id : cartId
     })
     const existProductInCart = cart.products.find( item => item.product_id == productId)
-    
+
     if(existProductInCart){
         // console.log(" cập nhật quantity")
         const newQuantity = quantity + existProductInCart.quantity ;
-        // console.log(newQuantity);
+        console.log(newQuantity);
         await Cart.updateOne({
             _id : cartId ,
             'products.product_id' : productId,
+
         } , {
             'products.$.quantity' : newQuantity
+
         } )
 
     } else {
         let ObjectCart = {
             product_id : productId,
             quantity : quantity
-    
+
         }
         await Cart.updateOne({
             _id : cartId
         } , { $push  : { products : ObjectCart }})
         req.flash("success" , "Thêm sản phẩm vào giỏ hàng thành công ! ")
     }
-    
+    // console.log(cartId);
+    // console.log(productId);
+    // console.log(quantity);
+
+
     res.redirect("back");
 }
-    
-    
