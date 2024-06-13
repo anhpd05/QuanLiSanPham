@@ -8,7 +8,7 @@ module.exports.index = async (req, res) => {
         deleted : false ,
         status : "active",
         featured : "1"
-    }).limit(3)
+    }).limit(3).sort({position : "asc"})
     const newProduct = productsNewPriceHelper.priceNew(productsFeatured);
     console.log(newProduct)
 //Hết Lấy ra sản phẩm nổi bật

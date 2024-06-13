@@ -10,7 +10,7 @@ module.exports.index =  async (req, res) => {
         deleted : false
     }).sort({position : "desc"});
     const newProduct = products.map( (item) => {
-        item.priceNew = (item.price*(100-item.discountPercentage)/100).toFixed(1)
+        item.priceNew = (item.price*(100-item.discountPercentage)/100).toFixed(0)
         return item
     })
 
@@ -44,7 +44,7 @@ module.exports.detail =  async (req, res) => {
           }
         console.log(product.category.slug)
         
-        const newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(1);
+        const newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(0);
         product.priceNew = newPrice
         
         res.render("client/pages/products/detail.pug" ,{
@@ -82,7 +82,7 @@ module.exports.category =  async (req, res) => {
     })
 
     const newProduct = products.map( (item) => {
-        item.priceNew = (item.price*(100-item.discountPercentage)/100).toFixed(1)
+        item.priceNew = (item.price*(100-item.discountPercentage)/100).toFixed(0)
         return item
     })
     // console.log(products)
