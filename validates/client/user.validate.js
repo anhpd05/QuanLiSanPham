@@ -49,3 +49,13 @@ module.exports.registerPost = (req, res, next) => {
     next();
   }
 
+
+module.exports.forgotPass = (req, res, next) => {
+    if (!req.body.email) {
+      req.flash('error', "Vui Lòng nhập email!");
+      res.redirect("back");
+      return;
+    }
+    
+    next();
+}
