@@ -59,3 +59,25 @@ module.exports.forgotPass = (req, res, next) => {
     
     next();
 }
+
+module.exports.resetPasswordPost = (req, res, next) => {
+  if (!req.body.password) {
+    req.flash('error', "Vui Lòng nhập mật khẩu");
+    res.redirect("back");
+    return;
+  }
+  if (req.body.password.length < 6) {
+    req.flash('error', "Vui Lòng nhập mật khẩu trên 6 kí tự!");
+    res.redirect("back");
+    return;
+  }
+  if (req.body.configPassword != req.body.password) {
+    req.flash('error', "Xác nhận mật khẩu không hợp lệ!");
+    res.redirect("back");
+    return;
+}
+
+
+  
+  next();
+}
