@@ -8,6 +8,7 @@ const rolesRouter = require("./role.route");
 const accountsRouter = require("./account.route");
 const authRouter = require("./auth.route");
 const myAccountRouter = require("./my-account.route");
+const settingsRouter = require("./setting.route");
 
 // tạo cái biến /admin để sang bên config để sau sửa cho dễ
 
@@ -27,4 +28,7 @@ module.exports = (app) => {
     app.use( PATH_ADMIN + '/auth' , authRouter)
 
     app.use( PATH_ADMIN + '/my-account' ,authMiddleware.requireAuth, myAccountRouter)
+
+    app.use( PATH_ADMIN + '/settings', authMiddleware.requireAuth,settingsRouter
+    );
 }
