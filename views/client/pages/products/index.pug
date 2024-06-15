@@ -1,6 +1,7 @@
 extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 include ../../mixins/alert.pug
+include ../../mixins/pagination
 
 //- block main 
 //-   h1 Hello mọi người đây là trang sản phẩm
@@ -30,4 +31,5 @@ block main
               .inner-price-new #{item.priceNew}$
               .inner-price-old #{item.price}$
               .inner-discount -#{item.discountPercentage}%
-  
+  div(class="d-flex justify-content-center")
+    +pagination(pagination)

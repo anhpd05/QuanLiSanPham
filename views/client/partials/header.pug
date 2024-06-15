@@ -1,18 +1,20 @@
+link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" )
+link(rel="stylesheet", href="/css/style.css")
 include ../mixins/sub-menu.pug
-header.header
+header.header.bg-info
   .container
     .row.align-items-center
       .col-2
         .inner-logo
           a(href="/")
-            img(src=settingGeneral.logo, alt="Logo")
+            img.img-fluid.rounded.w-75(src=settingGeneral.logo alt='tech_store_logo')
       if(user)
         .col-4 
-          form(
+          form.expanded-search(
             action="/search"
             method="GET"
           ) 
-            div(class="form-group d-flex mb-0")
+            divv.search-form(class="form-group d-flex mb-0")
               input(
                 type="text"
                 placeholder="Nhập từ khóa..."
@@ -28,17 +30,18 @@ header.header
           .inner-menu
             ul
               li
-                a(href="/") Trang chủ
+                a(href="/" class="text-dark") Trang chủ
+                  span(class="fa-solid fa-house ml-2 mr-1")
               li(class="sub-menu")
                 - const pathProduct = "/products"
-                a(href="/products") Sản phẩm
+                a(href="/products" class="text-dark") Sản phẩm
                 +sub-menu(layoutHeaderProductCategory,pathProduct)
               li
-                a(href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
+                a(href="/cart" class="text-dark") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
               li 
-                a(href="/user/infor") #{user.fullName}                
+                a(href="/user/infor" class="text-dark")  #{user.fullName} 
               li 
-                a(href="/user/logout") Đăng Xuất
+                a(href="/user/logout" class="text-dark") Đăng Xuất
 
       else 
         .col-4
@@ -62,15 +65,15 @@ header.header
           .inner-menu
             ul
               li
-                a(href="/") Trang chủ
+                a(href="/" class="text-dark") Trang chủ
               li(class="sub-menu")
                 - const pathProduct = "/products"
-                a(href="/products") Sản phẩm
+                a(href="/products" class="text-dark") Sản phẩm
                 +sub-menu(layoutHeaderProductCategory,pathProduct)
               li
-                a(href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
+                a(href="/cart" class="text-dark") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
                 
               li  
-                a(href="/user/register") Đăng ký
+                a(href="/user/register" class="text-dark") Đăng ký
               li 
-                a(href="/user/login") Đăng nhập               
+                a(href="/user/login" class="text-dark") Đăng nhập               

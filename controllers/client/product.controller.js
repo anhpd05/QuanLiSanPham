@@ -2,13 +2,31 @@ const Product = require("../../models/product.model");
 const productsNewPriceHelper = require("../../helpers/product.priceNew")
 const ProductCategory = require("../../models/product-category.model");
 const productCategoryHelperes = require("../../helpers/product-category");
+const paginationHelpers = require("../../helpers/pagination");
 
 // [GET] : /products
 module.exports.index =  async (req, res) => {
+
+//Pagination ( Phân Trang)
+    let find = {
+        deleted : false
+    }
+    const countProducts = await Product.countDocuments(find);
+    let objectPagination = paginationHelpers(
+    {
+        currentPage: 1,
+        limitItem: 9,
+    },
+    req.query,
+    countProducts
+    );
+    
+// End Pagination
+
     const products = await Product.find({
         status : "active",
         deleted : false
-    }).sort({position : "desc"});
+    }).sort({position : "desc"}).limit(objectPagination.limitItem).skip(objectPagination.skip);
     const newProduct = products.map( (item) => {
         item.priceNew = (item.price*(100-item.discountPercentage)/100).toFixed(0)
         return item
@@ -19,6 +37,7 @@ module.exports.index =  async (req, res) => {
     res.render("client/pages/products/index.pug" ,{
         pageTitle : "Danh Sách Sản Phẩm",
         products : newProduct,
+        pagination: objectPagination
     });
 }
 
