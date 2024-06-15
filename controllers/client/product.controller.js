@@ -15,7 +15,7 @@ module.exports.index =  async (req, res) => {
     let objectPagination = paginationHelpers(
     {
         currentPage: 1,
-        limitItem: 9,
+        limitItem: 6,
     },
     req.query,
     countProducts
@@ -80,17 +80,32 @@ module.exports.detail =  async (req, res) => {
 
 // [GET] : /products/:slugCategory
 module.exports.category =  async (req, res) => {
+    let find = {
+        deleted : false
+    }
+    const countProducts = await Product.countDocuments(find);
+    let objectPagination = paginationHelpers(
+    {
+        currentPage: 1,
+        limitItem: 6,
+    },
+    req.query,
+    countProducts
+    );
+
+
     const category = await ProductCategory.findOne({
         slug : req.params.slugCategory,
         deleted : false ,
-        status : "active"
+        status : "active",
+        
     })
 
     
 
     const listSubCategory = await productCategoryHelperes.getSubCategory(category.id);
 
-   const listSubCategoryID = listSubCategory.map((item) => {
+    const listSubCategoryID = listSubCategory.map((item) => {
         return item.id
    })
 
@@ -108,6 +123,7 @@ module.exports.category =  async (req, res) => {
     res.render("client/pages/products/index.pug" ,{
         pageTitle : category.title ,
         products : newProduct,
+        pagination: objectPagination
         
     });
 

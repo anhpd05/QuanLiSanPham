@@ -4,6 +4,14 @@ include ../../mixins/alert.pug
 block main
   +alert-error(5000)
   +alert-success(5000)
+  .container-fluid.d-flex.flex-column.bg-light.gap-2
+    section.container-lg.d-flex.p-2.ml-5
+    span.text-dark
+      a(href='/') Trang chủ
+      |  / 
+      a(href='/products') Sản phẩm
+      |  / 
+      span #{product.title}
   .product-detail
     .container.my-5
       .row
