@@ -74,12 +74,13 @@ block main
             section.intro
                 .row
                     .col-md-12.text-center
-                        h2 Chào mừng đến với Thế giới Điện thoại!
-                        p Tại đây, chúng tôi mang đến cho bạn những chiếc điện thoại thông minh mới nhất, công nghệ tiên tiến và trải nghiệm tuyệt vời. Khám phá ngay hôm nay!
+                        h2 Chào mừng đến với Thế giới Máy Tính!
+                        p Tại đây, chúng tôi mang đến cho bạn những chiếc máy tính thông minh mới nhất, công nghệ tiên tiến và trải nghiệm tuyệt vời. Khám phá ngay hôm nay!
+                        h2 Giảm giá sốc lên đến 30% cho các dòng máy tính mới nhất.
 
                 // Jumbotron (khuyến mãi)
             .jumbotron.text-center
-                h1 Siêu ưu đãi điện thoại!
+                h2 Siêu ưu đãi máy tính!
                 p Giảm giá sốc lên đến 30% cho các dòng điện thoại mới nhất.
 
             // Sản phẩm nổi bật
@@ -108,7 +109,31 @@ block main
                                     .inner-price-new !{item.newPrice}$
                                     .inner-price-old #{item.price}$
                                     .inner-discount -#{item.discountPercentage}%   
-
+            // Sản phẩm mới nhất
+            section.new-products
+                .row
+                    .col-12
+                        +box-head("Sản phẩm mới nhất")
+                .row
+                    each item in productNew
+                        .col-4.mb-3
+                            .product-item
+                                .inner-image
+                                    img( 
+                                        href= `/products/detail/${item.slug}`
+                                        src=item.thumbnail, a
+                                        lt=item.title
+                                    )
+                                    
+                                .inner-content
+                                    a(
+                                        href= `/products/detail/${item.slug}`
+                                        class="inner-title"
+                                    ) #{item.title} 
+                                    div !{item.description}
+                                    .inner-price-new !{item.newPrice}$
+                                    .inner-price-old #{item.price}$
+                                    .inner-discount -#{item.discountPercentage}%   
             // Thương hiệu nổi tiếng
             section.brands
                 h2 Thương hiệu nổi tiếng
