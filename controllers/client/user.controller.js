@@ -1,5 +1,6 @@
 const User = require("../../models/user.model");
 const ForgotPassword = require("../../models/forgot-password.model");
+const Cart = require("../../models/cart.model");
 const md5 = require('md5');
 const generateHelper = require("../../helpers/generate")
 const sendMailHelper = require("../../helpers/sendMail")
@@ -40,7 +41,7 @@ module.exports.login = (req, res) => {
     res.render("client/pages/user/login", {
       pagetitle: "Đăng nhập"
     });
-  }
+}
 
   // [GET] /user/login
 module.exports.loginPost = async (req, res) => {
@@ -67,14 +68,24 @@ module.exports.loginPost = async (req, res) => {
       res.redirect("back");
       return;
     }
-  
+    // lưu user_id vào collection cart
+    const card = await Cart.findOne({ user_id: user.id });
+
+    if (card) {
+      res.cookie("cartId", card.id);
+    } else {
+      const cartId = req.cookies.cartId;
+      await Cart.updateOne({ _id: cartId }, { user_id: user.id });
+    }
+
     res.cookie("tokenUser", user.tokenUser);
     res.redirect("/")
-  }
+}
 
 // [GET] /user/logout
 module.exports.logout = (req, res) => {
     res.clearCookie("tokenUser");
+    res.clearCookie("cartId");
     res.redirect("/user/login");
 }
 
@@ -132,7 +143,7 @@ module.exports.otpPassword = (req, res) => {
       pageTitle: "Nhập mã OTP",
       email: email,
     })
-  }
+}
 
 // [POST] /user/password/otp
 module.exports.otpPasswordPost = async (req, res) => {
@@ -178,4 +189,12 @@ module.exports.resetPasswordPost = async (req, res) => {
   req.flash("success" , "Đổi lại mật khẩu thành công!")
   res.redirect("/")
 
+}
+
+// [GET] /user/infor
+module.exports.infor = (req, res) => {
+
+  res.render("client/pages/user/infor", {
+    pageTitle: "Thông tin tài khoản"
+  })
 }

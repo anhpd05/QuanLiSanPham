@@ -7,7 +7,7 @@ header.header
           a(href="/")
             img(src="/images/TechStore-Logo.png", alt="Logo")
       if(user)
-        .col-5 
+        .col-4 
           form(
             action="/search"
             method="GET"
@@ -24,7 +24,7 @@ header.header
                 type="submit"
                 class="btn btn-primary ml-2"
               ) Tìm
-        .col-5
+        .col-6
           .inner-menu
             ul
               li
@@ -35,7 +35,8 @@ header.header
                 +sub-menu(layoutHeaderProductCategory,pathProduct)
               li
                 a(href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
-                
+              li 
+                a(href="/user/infor") #{user.fullName}                
               li 
                 a(href="/user/logout") Đăng Xuất
 
