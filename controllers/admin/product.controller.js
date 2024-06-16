@@ -74,7 +74,7 @@ if(req.query.sortKey && req.query.sortValue) {
             })
             updatedBy.accountFullName = userUpdated.fullName
         }
-        console.log(product)
+        // console.log(product)
     }
 
     res.render("admin/pages/products/index.pug" , {
@@ -143,12 +143,12 @@ module.exports.changeMulti = async (req, res) => {
             req.flash('success', `Đã xoá ${ids.length} sản phẩm!`);
             break;
         case "change-position":
-            console.log(req.body.ids)
+            // console.log(req.body.ids)
             for (const item of ids) {
                 let[id,position] = item.split("-");
                 position = parseInt(position)
-                console.log(id)
-                console.log(position)
+                // console.log(id)
+                // console.log(position)
             await Product.updateOne({_id : id } , {
                 position : position,
                 $push : {updatedBy : updatedBy}

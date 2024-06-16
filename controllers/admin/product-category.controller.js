@@ -52,7 +52,7 @@ module.exports.index = async (req, res) => {
     }else {
         sort.position = "desc"
     }
-    console.log(req.query)
+    // console.log(req.query)
 //End Sort 
   
     const products = await ProductCategory
@@ -84,7 +84,7 @@ module.exports.create = async (req, res) => {
     const records = await ProductCategory.find(find)
 
     const newRecords = createTreeHelpers.tree(records);
-    console.log(newRecords);
+    // console.log(newRecords);
 
     res.render("admin/pages/products-category/create.pug" , {
         pageTitle : "Tạo danh mục sản phẩm ",

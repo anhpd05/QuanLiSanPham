@@ -21,7 +21,7 @@ module.exports.addPost = async (req, res) => {
     if(existProductInCart){
         // console.log(" cập nhật quantity")
         const newQuantity = quantity + existProductInCart.quantity ;
-        console.log(newQuantity);
+        // console.log(newQuantity);
         await Cart.updateOne({
             _id : cartId ,
             'products.product_id' : productId,
@@ -108,7 +108,7 @@ module.exports.update = async (req, res) => {
 
     } )
 
-    console.log(quantity);
+    // console.log(quantity);
     req.flash("success" , "Đã cập nhật số lượng ở giỏ hàng!")
     res.redirect("back")
 }

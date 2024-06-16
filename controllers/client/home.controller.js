@@ -9,7 +9,7 @@ module.exports.index = async (req, res) => {
         deleted : false ,
         status : "active",
         featured : "1"
-    }).limit(3).sort({position : "asc"})
+    }).limit(3).sort({position : "desc"})
     const newProduct = productsNewPriceHelper.priceNew(productsFeatured);
     // console.log(newProduct)
 
@@ -19,7 +19,7 @@ module.exports.index = async (req, res) => {
 const productNew = await Product.find({
     deleted : false ,
     status : 'active',
-}).limit(3).sort({ position : "asc"})
+}).limit(3).sort({ position : "desc"})
 const newProductNew = productsNewPriceHelper.priceNew(productNew)
 
 // Hết hiển thị danh sách sản phẩm mới nhất

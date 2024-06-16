@@ -78,7 +78,7 @@ module.exports.dashboard = async (req, res) => {
       status: "inactive"
     });
   
-    console.log(statistic);
+    // console.log(statistic);
   
     res.render("admin/pages/dashboard/index", {
       pageTitle: "Trang tổng quan",
