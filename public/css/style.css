@@ -223,13 +223,20 @@
     background: #eae9e9;
     min-width: 180px;
     display: none;
+    border-radius: 8px; /* Bo tròn các góc */
+    box-shadow: 0 7px 13px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
   }
   
   .sub-menu ul li {
-    padding: 10px;
+    padding: 10px 20px;
     border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease;
   }
-  
+  .sub-menu ul li:hover {
+    background: #D6E6F0;
+  }
   .sub-menu:hover>ul {
     display: block;
   }
@@ -241,12 +248,24 @@
   .sub-menu ul li ul {
     right: 100%;
     top: 0;
+    background: #dcdcdc; /* Màu nền cho sub-menu con */
+    border-radius: 8px; /* Bo tròn các góc cho sub-menu con */
+    box-shadow: 0 7px 13px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
   }
   
   .sub-menu ul li:hover>ul {
     display: block;
   }
-  
+  .sub-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+
+  .sub-menu ul li a:hover {
+    color: #000;
+  }
+    
   /* End sub-menu */
   
   /* Alert */
@@ -436,7 +455,7 @@
 }
 
 .col.bg-white.p-2.rounded.d-flex.flex-column a.fs-6.text-dark.text-decoration-none {
-  font-family: 'Roboto', sans-serif; /* Thay đổi font chữ (ví dụ: Roboto) */
+  font-family: 'Roboto', sans-serif; 
   font-size: 19px;
 }
 /* CSS để mở rộng form tìm kiếm */
