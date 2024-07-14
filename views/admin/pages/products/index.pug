@@ -108,7 +108,7 @@ block main
                 td 
                   - const updatedBy = item.updatedBy[item.updatedBy.length - 1]
                   if(updatedBy)
-                    p #{item.accountFullName}
+                    p #{updatedBy.accountFullName}
                     p 
                       +formatDateTime(updatedBy.updatedAt)
                 td

@@ -52,6 +52,14 @@ app.use(express.static(`${__dirname}/public`));
 route(app);
 routeAdmin(app);
 
+// Các đường dẫn không hợp lệ sẽ vào trang 404
+app.get("*", (req, res) => {
+    res.render("client/pages/errors/404", {
+      pageTitle: "404 Not found",
+    });
+});
+  
+
 // App Local Variable 
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 app.locals.moment = moment;

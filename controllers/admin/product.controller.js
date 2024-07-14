@@ -74,9 +74,8 @@ if(req.query.sortKey && req.query.sortValue) {
             })
             updatedBy.accountFullName = userUpdated.fullName
         }
-        // console.log(product)
+        console.log(product)
     }
-
     res.render("admin/pages/products/index.pug" , {
         pageTitle : "Trang danh sách sản phẩm ",
         products : products,
@@ -97,9 +96,8 @@ module.exports.changeStatus = async (req, res) => {
     await Product.updateOne({_id : id } , {
         status : status,
         $push : {updatedBy : updatedBy}
-
     });
-    req.flash('success', `Đã thay đổi trạng thái  thành công sản phẩm!`);
+    req.flash('success', `Đã thay đổi trạng thái thành công sản phẩm!`);
     res.redirect('back')
 }
 // [PATCH] : /admin/products/change-multi

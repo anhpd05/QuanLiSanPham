@@ -40,8 +40,6 @@ const productSchema = new mongoose.Schema({
         account_id : String ,
         updatedAt : Date
     }]
-},{
-    timestamps : true 
 });
 
 const Product = mongoose.model('Product', productSchema,"products");
