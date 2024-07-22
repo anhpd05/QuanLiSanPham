@@ -1,3 +1,3 @@
 Tài khoản admin 
-tk : banhbabanhmj123@gmail.com
+tk : anhpd.ptit@gmail.com
 mk : Ducanh2005
